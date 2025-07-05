@@ -148,20 +148,22 @@ class Kabid extends CI_Controller
         $data['user'] = $this->session->userdata();
 
         // Grafik bulanan
-        $bulan = $this->input->get('bulan') ?? date('n');
-        $tahun = $this->input->get('tahun') ?? date('Y');
-        $this->db->select('
-            DATE_FORMAT(tgl_pengaduan) AS tanggal,
-            COUNT(CASE WHEN id_kategori_pengaduan = 3 THEN 1 END) AS pengaduan_biasa,
-            COUNT(CASE WHEN id_kategori_pengaduan = 2 THEN 1 END) AS prioritas,
-            COUNT(CASE WHEN id_kategori_pengaduan = 1 THEN 1 END) AS harus_segera
-        ');
-        $this->db->from('pengaduan');
-        $this->db->where('MONTH(tgl_pengaduan)', $bulan);
-        $this->db->where('YEAR(tgl_pengaduan)', $tahun);
-        $this->db->group_by('DATE(tgl_pengaduan)');
-        $this->db->order_by('tanggal', 'ASC');
-        $data['grafik_pengaduan'] = $this->db->get()->result_array();
+        $bulan = $this->input->get('bulan') ?? 5; // Default bulan Mei
+$tahun = $this->input->get('tahun') ?? 2025; // Default tahun 2025
+
+$this->db->select('
+    DATE(tgl_pengaduan) AS tanggal,
+    COUNT(CASE WHEN id_kategori_pengaduan = 3 THEN 1 END) AS pengaduan_biasa,
+    COUNT(CASE WHEN id_kategori_pengaduan = 2 THEN 1 END) AS prioritas,
+    COUNT(CASE WHEN id_kategori_pengaduan = 1 THEN 1 END) AS harus_segera
+');
+$this->db->from('pengaduan');
+$this->db->where('MONTH(tgl_pengaduan)', $bulan);
+$this->db->where('YEAR(tgl_pengaduan)', $tahun);
+$this->db->group_by('DATE(tgl_pengaduan)');
+$this->db->order_by('tanggal', 'ASC');
+
+$data['grafik_pengaduan'] = $this->db->get()->result_array();
 
         
         $this->load->view('templates/header', $data);
