@@ -460,7 +460,7 @@ class Admin extends CI_Controller
         $this->db->where('MONTH(tgl_pengaduan)', $bulan);
         $this->db->where('YEAR(tgl_pengaduan)', $tahun);
         $this->db->group_by('DATE(tgl_pengaduan)');
-        $this->db->order_by('DATE(tgl_pengaduan)', 'ASC');
+        $this->db->order_by('DATE(tanggal)', 'ASC');
         $data['grafik_pengaduan'] = $this->db->get()->result_array();
 
         // Tambahkan judul halaman
