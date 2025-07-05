@@ -8,7 +8,7 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('classification_helper');
-        $this->load->helper('fonnte'); // Pastikan helper twilio dimuat
+        $this->load->helper('fonnte'); 
     }
 
     public function pengaduan()
