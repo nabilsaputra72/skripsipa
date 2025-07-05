@@ -1,0 +1,47 @@
+# Composer dependencies (jika digunakan)
+vendor/
+
+# Node dependencies (jika digunakan)
+node_modules/
+
+# Environment file
+.env
+
+# Cache files
+writable/cache/*
+!writable/cache/index.html
+
+# Logs
+writable/logs/*
+!writable/logs/index.html
+
+# Sessions
+writable/session/*
+!writable/session/index.html
+
+# Uploads (opsional, tergantung struktur proyek)
+writable/uploads/*
+!writable/uploads/index.html
+
+# IDEs / Editors
+*.sublime-project
+*.sublime-workspace
+*.phpstorm.meta.php
+*.idea/
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# PHPUnit
+phpunit.xml
+phpunit.xml.dist
+
+# Build / dist folders (jika digunakan)
+dist/
+build/
+logs/
+
+application/logs/
+application/cache/
