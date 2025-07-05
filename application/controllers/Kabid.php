@@ -151,7 +151,7 @@ class Kabid extends CI_Controller
         $bulan = $this->input->get('bulan') ?? date('n');
         $tahun = $this->input->get('tahun') ?? date('Y');
         $this->db->select('
-            DATE_FORMAT(tgl_pengaduan, "%d") AS tanggal,
+            DATE_FORMAT(tgl_pengaduan) AS tanggal,
             COUNT(CASE WHEN id_kategori_pengaduan = 3 THEN 1 END) AS pengaduan_biasa,
             COUNT(CASE WHEN id_kategori_pengaduan = 2 THEN 1 END) AS prioritas,
             COUNT(CASE WHEN id_kategori_pengaduan = 1 THEN 1 END) AS harus_segera
