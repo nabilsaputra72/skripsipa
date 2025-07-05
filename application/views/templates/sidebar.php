@@ -8,7 +8,7 @@
     </div>
     <div class="sidebar-brand-text mx-3">
       <span class="font-weight-bold">Pengaduan</span><br>
-      <small class="text-white-50">Management System</small>
+      <small class="text-white-50">Manajer Pengaduan</small>
     </div>
   </a>
 
