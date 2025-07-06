@@ -379,7 +379,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 hero-content" data-aos="fade-right">
-          <h1 class="hero-title">Testing Pengaduan Perlindungan Konsumen ke Dinas Perdagangan Prov Kalsel</h1>
+          <h1 class="hero-title">Ngab anjeng Pengaduan Perlindungan Konsumen ke Dinas Perdagangan Prov Kalsel</h1>
           <p class="hero-subtitle">Dinas Perdagangan Provinsi Kalimantan Selatan siap membantu menyelesaikan keluhan Anda melalui mekanisme klarifikasi dan mediasi dengan pelaku usaha. Mari jadi konsumen cerdas yang berani mengadu untuk hak yang lebih terlindungi</p>
           <div class="d-flex flex-wrap gap-3">
             <a href="Auth" class="btn btn-light btn-lg">Tulis Pengaduan</a>
