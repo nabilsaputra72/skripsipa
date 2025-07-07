@@ -3,7 +3,6 @@ function classify_pengaduan($isi_laporan, $kerugian_masyarakat, $nama_toko = nul
 {
     $CI =& get_instance();
 
-    // Aturan baru dari form tambahan
     if ($isi_laporan_tambahan === 'ancaman_kesehatan' || $kerugian_tambahan === 'gt_10jt' || $kerugian_tambahan === 'kerugian_kesehatan') {
         return 1; // Harus Segera Diselesaikan
     }
