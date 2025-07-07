@@ -236,9 +236,7 @@
                                         <i class="fas fa-id-card"></i>
                                         <input type="text" name="nik" class="form-control"
                                             placeholder="Masukkan NIK Anda"
-                                            pattern="63[0-9]{14}" maxlength="16" minlength="16"
-                                            title="NIK harus 16 digit angka dan diawali 63 (Kalimantan Selatan)" required>
-                                        <span class="input-hint">Format: 63xxxxxxxxxxxxxx (16 digit)</span>
+                                            maxlength="16" minlength="16">
                                     </div>
                                     <button type="submit" class="btn btn-submit btn-block">
                                         <i class="fas fa-paper-plane me-2"></i> Kirim Data Diri
