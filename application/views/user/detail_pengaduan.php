@@ -250,40 +250,48 @@
     }
     ?>
     <?php if ($pengaduan['id_status'] == 7 && !$sudah_nilai): ?>
-    <div class="card mt-4">
-      <div class="card-body">
-        <h5 class="mb-3">Beri Penilaian Kepuasan Anda</h5>
-        <form action="<?= base_url('user/simpan_kepuasan/' . $pengaduan['id_pengaduan']) ?>" method="post">
-          <div class="mb-3">
-            <label class="form-label">Kepuasan (Bintang):</label>
-            <div id="star-rating">
-              <?php for($i=5;$i>=1;$i--): ?>
-                <input type="radio" name="nilai" id="star<?= $i ?>" value="<?= $i ?>" required>
-                <label for="star<?= $i ?>">★</label>
-              <?php endfor; ?>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="komentar" class="form-label">Komentar/Saran (opsional):</label>
-            <textarea name="komentar" id="komentar" class="form-control" rows="2"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success">Kirim Penilaian</button>
-        </form>
+<div class="card mt-4 shadow border-success" style="border-width:2px;">
+  <div class="card-body bg-light">
+    <h5 class="mb-3 text-success" style="font-weight:bold;">
+      <i class="fas fa-star"></i> Beri Penilaian Kepuasan Anda
+    </h5>
+    <form action="<?= base_url('user/simpan_kepuasan/' . $pengaduan['id_pengaduan']) ?>" method="post">
+      <div class="mb-3 text-center">
+        <label class="form-label" style="font-size:1.1rem;font-weight:600;">Kepuasan (Bintang):</label>
+        <div id="star-rating" class="mb-2" style="font-size:2.5rem;">
+          <?php for($i=5;$i>=1;$i--): ?>
+            <input type="radio" name="nilai" id="star<?= $i ?>" value="<?= $i ?>" required>
+            <label for="star<?= $i ?>" title="<?= $i ?> Bintang">★</label>
+          <?php endfor; ?>
+        </div>
+        <div class="text-muted small mb-2">
+          <span>1 Bintang: Sangat Tidak Puas</span> &nbsp;|&nbsp;
+          <span>5 Bintang: Sangat Puas</span>
+        </div>
       </div>
-    </div>
-    <style>
-    #star-rating { direction: rtl; unicode-bidi: bidi-override; }
-    #star-rating input { display: none; }
-    #star-rating label {
-      font-size: 2rem; color: #ccc; cursor: pointer;
-    }
-    #star-rating input:checked ~ label,
-    #star-rating label:hover,
-    #star-rating label:hover ~ label {
-      color: #ffc107;
-    }
-    </style>
-    <?php endif; ?>
+      <div class="mb-3">
+        <label for="komentar" class="form-label">Komentar/Saran (opsional):</label>
+        <textarea name="komentar" id="komentar" class="form-control" rows="2"></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-success btn-lg px-5">Kirim Penilaian</button>
+      </div>
+    </form>
+  </div>
+</div>
+<style>
+#star-rating { direction: rtl; unicode-bidi: bidi-override; display:inline-block; }
+#star-rating input { display: none; }
+#star-rating label {
+  font-size: 2.5rem; color: #ccc; cursor: pointer; transition: color 0.2s;
+}
+#star-rating input:checked ~ label,
+#star-rating label:hover,
+#star-rating label:hover ~ label {
+  color: #ffc107;
+}
+</style>
+<?php endif; ?>
   </div>
 
   <!-- Scroll to Top Button-->
