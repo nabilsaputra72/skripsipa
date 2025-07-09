@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Custom styles -->
-  <link href="http://localhost/pengaduan/assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?= base_url('assets/css/sb-admin-2.min.css') ?>" rel="stylesheet">
   <style>
     :root {
       --primary: #4e73df;
@@ -325,11 +325,11 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="http://localhost/pengaduan/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="http://localhost/pengaduan/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
+  <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="http://localhost/pengaduan/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
 
   <script>
     function toggleIsiLainnya(sel) {
