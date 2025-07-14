@@ -724,11 +724,13 @@ $data['grafik_pengaduan'] = $this->db->get()->result_array();
         p.alamat_pelaku_usaha,
         p.isi_laporan,
         p.kerugian_masyarakat,
-        sp.status AS status_pengaduan
+        sp.status AS status_pengaduan,
+        kp.kategori AS kategori_pengaduan
     ');
     $this->db->from('pengaduan p');
     $this->db->join('datapenduduk dp', 'p.id_nik = dp.nik', 'left');
     $this->db->join('status_pengaduan sp', 'p.id_status = sp.id_status', 'left');
+    $this->db->join('kategori_pengaduan kp', 'p.id_kategori_pengaduan = kp.id_kategori_pengaduan', 'left');
     $this->db->where('p.tgl_pengaduan >=', $tanggal_awal);
     $this->db->where('p.tgl_pengaduan <=', $tanggal_akhir);
 
