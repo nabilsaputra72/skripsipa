@@ -766,6 +766,8 @@ $data['grafik_pengaduan'] = $this->db->get()->result_array();
         $sheet->setCellValue('G' . $row, $p['isi_laporan']);
         $sheet->setCellValue('H' . $row, $p['kerugian_masyarakat']);
         $sheet->setCellValue('I' . $row, $p['status_pengaduan']);
+        $kategori = $p['kategori_pengaduan'] == 'Harus Segera Diselesaikan' ? 'Urgent' : $p['kategori_pengaduan'];
+        $sheet->setCellValue('J' . $row, $kategori);
         $row++;
     }
 

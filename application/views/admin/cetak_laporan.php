@@ -79,7 +79,7 @@
                                 <td><?= $row['alamat_pelaku_usaha']; ?></td>
                                 <td><?= $row['no_telp_pelaku_usaha']; ?></td>
                                 <td><?= $row['jenis_barang_jasa']; ?></td>
-                                <td><?= $row['kategori_pengaduan']; ?></td>
+                                <td> <?= $row['kategori_pengaduan'] == 'Harus Segera Diselesaikan' ? 'Urgent' : $row['kategori_pengaduan']; ?></td>
                                 <td><?= $row['isi_laporan']; ?></td>
                                 <td><?= $row['kerugian_masyarakat']; ?></td>
                                 <td><?= $row['jenis_tuntutan']; ?></td>
