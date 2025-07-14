@@ -209,7 +209,7 @@
                         borderWidth: 1
                     },
                     {
-                        label: 'Harus Segera Diselesaikan',
+                        label: 'Urgent',
                         data: harusSegera,
                         backgroundColor: 'rgba(231, 74, 59, 0.5)',
                         borderColor: 'rgba(231, 74, 59, 1)',

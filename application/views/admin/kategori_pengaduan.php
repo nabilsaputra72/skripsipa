@@ -244,7 +244,7 @@
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="stat-card stat-urgent">
                     <div class="card-body">
-                        <h5 class="card-title">Harus Segera Diselesaikan</h5>
+                        <h5 class="card-title">Urgent</h5>
                         <p class="card-text"><?= $total_pengaduan['harus_segera']; ?> Pengaduan</p>
                         <i class="fas fa-fire"></i>
                     </div>
@@ -264,7 +264,7 @@
                                 6 => 'Belum Ditentukan',
                                 3 => 'Pengaduan Biasa',
                                 2 => 'Prioritas',
-                                1 => 'Harus Segera Diselesaikan'
+                                1 => 'Urgent'
                             ];
                             foreach ($kategori_urut as $id => $nama) : ?>
                                 <option value="<?= $id; ?>" <?= isset($_GET['kategori_id']) && $_GET['kategori_id'] == $id ? 'selected' : ''; ?>>
@@ -416,7 +416,7 @@
                             borderWidth: 1
                         },
                         {
-                            label: 'Harus Segera Diselesaikan',
+                            label: 'Urgent',
                             data: harusSegera,
                             backgroundColor: 'rgba(220, 53, 69, 0.7)',
                             borderColor: 'rgba(220, 53, 69, 1)',

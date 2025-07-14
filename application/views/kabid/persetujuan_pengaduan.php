@@ -319,7 +319,7 @@
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="stat-card stat-urgent">
                     <div class="card-body">
-                        <h5 class="card-title">Harus Segera Diselesaikan</h5>
+                        <h5 class="card-title">Urgent</h5>
                         <p class="card-text"><?= $total_pengaduan['harus_segera']; ?> Pengaduan</p>
                         <i class="fas fa-fire"></i>
                     </div>
