@@ -396,7 +396,7 @@
                                             elseif ($p['id_kategori_pengaduan'] == 3) $badge = 'info';
                                             ?>
                                             <span class="badge badge-<?= $badge ?>">
-                                                <?= $p['kategori_pengaduan']; ?>
+                                                <?= $p['kategori_pengaduan'] == 'Harus Segera Diselesaikan' ? 'Urgent' : $p['kategori_pengaduan']; ?>
                                             </span>
                                         </td>
                                         <td>
