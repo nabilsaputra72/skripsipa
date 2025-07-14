@@ -395,7 +395,7 @@
                                         else $badge_class = 'badge-undetermined';
                                         ?>
                                         <span class="badge <?= $badge_class; ?>">
-                                            <?= $p['kategori_pengaduan']; ?>
+                                            <?= $p['kategori_pengaduan'] == 'Harus Segera Diselesaikan' ? 'Urgent' : $p['kategori_pengaduan']; ?>
                                         </span>
                                     </td>
                                     <td><?= $p['status_pengaduan']; ?></td>
