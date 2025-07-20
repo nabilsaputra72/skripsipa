@@ -60,59 +60,65 @@ class Auth extends CI_Controller
 
     public function handle_form()
     {
-    // Ambil data dari form
-    $email = $this->input->post('email', true);
-    $nik = $this->input->post('nik', true);
+        $nik = $this->input->post('nik');
+        $email = $this->input->post('email');
 
-    // Validasi input
-    if (empty($email) || empty($nik)) {
-        $this->session->set_flashdata('message', '<div class="alert alert-danger">Email dan NIK wajib diisi!</div>');
-        redirect('auth');
-    }
-
-    // Simpan data ke database
-    $existing = $this->db->get_where('datapenduduk', ['nik' => $nik])->row_array();
-    if ($existing) {
-        $this->session->set_flashdata('message', '<div class="alert alert-warning">NIK sudah terdaftar.</div>');
-    } else {
-        $data = [
-            'nik' => $nik,
-            'email' => $email,
-            'created_at' => date('Y-m-d H:i:s')
+        // Daftar kode wilayah Kalimantan Selatan
+        $wilayah_kalsel = [
+            '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '71', '72'
         ];
-        if ($this->db->insert('datapenduduk', $data)) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success">Data berhasil disimpan!</div>');
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal menyimpan data ke database.</div>');
+
+        // Validasi NIK awalan 63 dan dua digit berikutnya sesuai wilayah
+        if (!preg_match('/^63(\d{2})/', $nik, $matches) || !in_array($matches[1], $wilayah_kalsel)) {
+            $this->session->set_flashdata('message', 'NIK yang anda masukkan tidak termasuk wilayah kalimantan selatan');
+            $this->session->set_flashdata('message_type', 'danger');
             redirect('auth');
+            return;
         }
-    }
 
-    // Kirim email
-    $this->load->library('email');
-    $this->email->from('nabilsaputra736@gmail.com', 'Admin');
-    $this->email->to($email);
-    $this->email->subject('Konfirmasi Pengaduan Anda');
-    $this->email->message("
-        <p>Halo,</p>
-        <p>Terima kasih telah menggunakan layanan pengaduan kami.</p>
-        <p>NIK Anda: <strong>$nik</strong></p>
-        <p>Silakan klik link berikut untuk melanjutkan pengaduan Anda:</p>
-        <a href='" . base_url('user/pengaduan?nik=' . $nik) . "'>Form Pengaduan</a>
-        <p>Salam,</p>
-        <p>Tim Unit Layanan Perlindungan Konsumen</p>
-    ");
+        // Simpan data ke database
+        $existing = $this->db->get_where('datapenduduk', ['nik' => $nik])->row_array();
+        if ($existing) {
+            $this->session->set_flashdata('message', '<div class="alert alert-warning">NIK sudah terdaftar.</div>');
+        } else {
+            $data = [
+                'nik' => $nik,
+                'email' => $email,
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+            if ($this->db->insert('datapenduduk', $data)) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success">Data berhasil disimpan!</div>');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal menyimpan data ke database.</div>');
+                redirect('auth');
+            }
+        }
 
-    if ($this->email->send()) {
-        $this->session->set_flashdata('message', '<div class="alert alert-success">Email berhasil dikirim! Silakan cek email Anda.</div>');
-    } else {
-        $this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal mengirim email. Silakan coba lagi.</div>');
-        echo $this->email->print_debugger();
-        exit;
-    }
+        // Kirim email
+        $this->load->library('email');
+        $this->email->from('nabilsaputra736@gmail.com', 'Admin');
+        $this->email->to($email);
+        $this->email->subject('Konfirmasi Pengaduan Anda');
+        $this->email->message("
+            <p>Halo,</p>
+            <p>Terima kasih telah menggunakan layanan pengaduan kami.</p>
+            <p>NIK Anda: <strong>$nik</strong></p>
+            <p>Silakan klik link berikut untuk melanjutkan pengaduan Anda:</p>
+            <a href='" . base_url('user/pengaduan?nik=' . $nik) . "'>Form Pengaduan</a>
+            <p>Salam,</p>
+            <p>Tim Unit Layanan Perlindungan Konsumen</p>
+        ");
 
-    // Redirect kembali ke halaman form
-    redirect('auth');
+        if ($this->email->send()) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Email berhasil dikirim! Silakan cek email Anda.</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger">Gagal mengirim email. Silakan coba lagi.</div>');
+            echo $this->email->print_debugger();
+            exit;
+        }
+
+        // Redirect kembali ke halaman form
+        redirect('auth');
     }
 
     public function send_email()
