@@ -101,7 +101,7 @@
 
         .form-header h1 {
             font-weight: 700;
-            color: var(--dark);
+            color:  #f5f5f5ff;
             margin-bottom: 0.5rem;
         }
 
