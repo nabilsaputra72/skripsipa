@@ -101,7 +101,7 @@
 
         .form-header h1 {
             font-weight: 700;
-            color: var(--white);
+            color: var(--dark);
             margin-bottom: 0.5rem;
         }
 
@@ -180,6 +180,17 @@
             color: #6c757d;
             margin-top: 0.25rem;
             display: block;
+        }
+
+        body,
+        .form-header,
+        .form-header h1,
+        .form-header p,
+        .form-content,
+        .form-content label,
+        .form-content input,
+        .form-content .btn-submit {
+            color: #fff !important;
         }
 
         @media (max-width: 992px) {
