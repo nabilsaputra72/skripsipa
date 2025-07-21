@@ -190,7 +190,7 @@
         .form-content label,
         .form-content input,
         .form-content .btn-submit {
-            color: #fff !important;
+            color: #ffeeba !important;
         }
 
         @media (max-width: 992px) {
